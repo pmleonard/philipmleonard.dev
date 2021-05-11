@@ -1,6 +1,8 @@
 name: Preview Build
 on:
   push:
+    branches:
+    - dev/*
     branches-ignore: 
     - main
     - release/*
@@ -11,6 +13,10 @@ jobs:
     name: Copy dev branch to published branch docs/preview subdirectory
     runs-on: ubuntu-latest
     steps:
+    - name: checkout dev
+      uses: actions/checkout@v2
+      with:
+        path: branchdev
     - name: checkout p18d
       uses: actions/checkout@v2
       with:
@@ -21,11 +27,6 @@ jobs:
         mkdir -p temp/docs/preview
         cp -r -v branchpublished/* temp/
       shell: bash
-    - name: checkout dev
-      uses: actions/checkout@v2
-      with:
-        ref: dev
-        path: branchdev
     - name: copy dev
       run: |
         mkdir -p temp2/preview

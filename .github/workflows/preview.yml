@@ -28,7 +28,8 @@ jobs:
         mkdir -p temp2/preview
         branch=${{ github.ref }}
         branchname=$(echo "$branch" | sed "s/refs\/heads\///")
-        dest_path=${echo "temp/docs/$branchname"}
+        dest_path="temp/docs/"
+        dest_path+="$branchname"
         cp -r -v branchdev/docs/* temp2/preview/
         cp -r -v temp2/preview $dest_path
       shell: bash

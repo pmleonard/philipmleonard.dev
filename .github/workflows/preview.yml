@@ -3,10 +3,6 @@ on:
   push:
     branches:
     - dev/*
-    branches-ignore: 
-    - main
-    - release/*
-    - published
 permissions: write-all
 jobs:
   copypreview:

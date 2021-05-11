@@ -26,8 +26,11 @@ jobs:
     - name: copy dev
       run: |
         mkdir -p temp2/preview
-        cp -r branchdev/docs/* temp2/preview/
-        cp -r temp2/preview temp/docs/
+        branch=${{ github.ref }}
+        branchname=$(echo "$branch" | sed "s/refs\/heads\///")
+        dest_path=${echo "temp/docs/$branchname"}
+        cp -r -v branchdev/docs/* temp2/preview/
+        cp -r -v temp2/preview $dest_path
       shell: bash
     - name: echo & ls
       run: |

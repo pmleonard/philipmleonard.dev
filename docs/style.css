@@ -45,6 +45,9 @@ nav ul li {
 nav ul {
     list-style: none;
 }
+section {
+    background-color: #FFF;
+}
 #pageContent {
     max-width: 1000px;
     margin: auto;
